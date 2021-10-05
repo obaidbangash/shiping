@@ -6,11 +6,12 @@ function SignIn({ setIsAuth }) {
     const history = useHistory();
     function handleClick(e) {
         e.preventDefault();
-        const NewPassword = getItemFromLocalStorage('NewEmail');
+        const NewEmail = getItemFromLocalStorage('NewEmail');
         const UserPassword = getItemFromLocalStorage('NewPassword');
-        if (user.Email === NewPassword && user.Password === UserPassword) {
+        if (user.Email === NewEmail && user.Password === UserPassword) {
             setItemToLocalStorage('userEmail', user.Email)
             setItemToLocalStorage('UserPassword', user.Password);
+            setItemToLocalStorage('isAuth', true);
 
             setUser({ Email: "", Password: "" })
             setIsAuth(true)

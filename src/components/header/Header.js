@@ -8,6 +8,7 @@ export default function Header({ setIsAuth }) {
         removeItemFromLocalStorage("UserPassword")
         removeItemFromLocalStorage("isAuth")
         removeItemFromLocalStorage("userEmail");
+        // removeItemFromLocalStorage("NewUser");
         setIsAuth(false)
     }
 
@@ -20,14 +21,17 @@ export default function Header({ setIsAuth }) {
                             <h1 className="m-0"><Link to="/">OB Store</Link></h1>
                         </div>
                         <ul className="d-flex text-white m-0 p-0">
-                            <li><Link to="/">Dashboard</Link></li>
+                            <li><Link to="/dashboard">Dashboard</Link></li>
                             <li><Link to="/products">Products</Link></li>
                             <li><Link to="/cart">Cart</Link></li>
                             <li><Link to="/signin" onClick={() => SignOut()}>Sign Out</Link></li>
                             {/* <li><Link to="/">Sign In</Link></li>
-                            <li><Link to="/signup">Sign Up</Link></li> */}
+                            
+                            */}
+                            {/* <li></li> */}
 
                         </ul>
+
                         <LetterAvatars />
                     </div>
                 </div>

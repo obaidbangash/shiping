@@ -5,24 +5,40 @@ import { BrowserRouter as Router, Route, Switch, Link, Redirect, useHistory } fr
 import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/SignUp';
 import Container from "./components/Container"
-import { getItemFromLocalStorage } from './utils/localStorage';
+import { getItemFromLocalStorage, setItemToLocalStorage } from './utils/localStorage';
 import Dashboard from './components/dashboard/Dashboard';
-
-
+import { useSelector, useDispatch } from 'react-redux';
 // import { useAuth } from "./isAuth";
-function App(props) {
-  console.log(props)
+import { fetchProduct } from './redux/action/ProductAction';
+import Products from './components/products/Products';
+import Cart from './components/cart/Cart';
 
-  const [isAuth, setIsAuth] = useState(false);
+
+
+function App() {
+  // const dispatch = useDispatch();
+  // const Product = useSelector(state => state.ProductReducer.product)
+  // console.log("products", Product)
+
+  const Auth = getItemFromLocalStorage('isAuth')
+  const [isAuth, setIsAuth] = useState(Auth);
   useEffect(() => {
-    setIsAuth(getItemFromLocalStorage('isAuth'))
   }, [])
+
+  // useEffect(() => {
+  //   dispatch(fetchProduct());
+  // }, [])
+
   let Routes;
   if (isAuth) {
     Routes = (
       <Switch>
         <Route exact path="/dashboard" component={Dashboard} />
-        <Redirect from='/' to='/dashboard' />
+        <Route path="/products/:id" component={Products} />
+        <Route path="/cart" component={Cart} />
+
+
+        {/* <Redirect from='/' to='/dashboard' /> */}
       </Switch>
     )
   } else {
@@ -34,6 +50,7 @@ function App(props) {
       </Switch>
     )
   }
+
   return (
 
     <>

@@ -13,8 +13,6 @@ function SignUp({ setIsAuth, auth }) {
             setItemToLocalStorage('NewEmail', userData.Email);
             setItemToLocalStorage('Confirm', userData.Confirm)
             setItemToLocalStorage('NewPassword', userData.Password);
-            // setItemToLocalStorage("isAuth", (true));
-            // setItemToLocalStorage("newAuth", (true))
             setUserData(user)
             setIsAuth(true);
             setItemToLocalStorage("isAuth", (true))
